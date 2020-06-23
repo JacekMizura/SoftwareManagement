@@ -29,6 +29,9 @@ namespace SoftwareManagement.UserInterface.ProductForm
         {
             product.Name = tbName.Text.Trim();
             product.Price = tbPrice.Text.Trim();
+            product.Code = Int32.Parse(tbCode.Text.Trim());
+            product.ExpireTime = tbDate.Text.Trim();
+
             using (ModelContext db = new ModelContext())
             {
                 if (product.ProductID == 0)
@@ -37,7 +40,7 @@ namespace SoftwareManagement.UserInterface.ProductForm
                 
 
             }
-
+            MessageBox.Show("Pomyślnie dodano produkt");
             Close();
             
 

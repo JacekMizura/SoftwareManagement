@@ -3,10 +3,23 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class product : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Employees",
+                c => new
+                    {
+                        EmpId = c.Int(nullable: false, identity: true),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Email = c.String(),
+                        PhoneNumber = c.String(),
+                        Salary = c.String(),
+                    })
+                .PrimaryKey(t => t.EmpId);
+            
             CreateTable(
                 "dbo.Ingredients",
                 c => new
@@ -30,6 +43,19 @@
                 .PrimaryKey(t => t.ProductID);
             
             CreateTable(
+                "dbo.Users",
+                c => new
+                    {
+                        UserID = c.Int(nullable: false, identity: true),
+                        UserName = c.String(),
+                        Name = c.String(),
+                        LastName = c.String(),
+                        Password = c.String(),
+                        Role = c.String(),
+                    })
+                .PrimaryKey(t => t.UserID);
+            
+            CreateTable(
                 "dbo.ProductIngredients",
                 c => new
                     {
@@ -51,8 +77,10 @@
             DropIndex("dbo.ProductIngredients", new[] { "Ingredient_IngredientID" });
             DropIndex("dbo.ProductIngredients", new[] { "Product_ProductID" });
             DropTable("dbo.ProductIngredients");
+            DropTable("dbo.Users");
             DropTable("dbo.Products");
             DropTable("dbo.Ingredients");
+            DropTable("dbo.Employees");
         }
     }
 }

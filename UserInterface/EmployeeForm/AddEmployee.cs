@@ -15,6 +15,7 @@ namespace SoftwareManagement.UserInterface.EmployeeForm
 {
     public partial class AddEmployee : Form 
     {
+        Employee employee = new Employee();
         public AddEmployee()
         {
             InitializeComponent();
@@ -23,27 +24,27 @@ namespace SoftwareManagement.UserInterface.EmployeeForm
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            using(ModelContext db = new ModelContext())
+            employee.FirstName = tbName.Text.Trim();
+            employee.LastName = tbLastName.Text.Trim();
+            employee.Salary = tbSalary.Text.Trim();
+            employee.PhoneNumber = tbPhoneNumber.Text.Trim();
+            employee.Email = tbEmail.Text.Trim();
+
+            using (ModelContext db = new ModelContext())
             {
-                Employee model = employeeBindingSource.Current as Employee;
-                if(model != null)
+                if (employee.EmpId == 0)
                 {
-                    if (model.EmpId == 0)
-                        db.Entry<Employee>(model).State = System.Data.Entity.EntityState.Added;
-                    else
-                        db.Entry<Employee>(model).State = EntityState.Modified;
-                    db.SaveChanges();
-                    pContainer.Enabled = false;
+                    db.EmployeeList.Add(employee);
                 }
+
+                db.SaveChanges();
+
+
             }
-            pContainer.Enabled = true;
-            employeeBindingSource.Add(new Employee());
-            employeeBindingSource.MoveLast();
-            tbName.Focus();
+            MessageBox.Show("Pomyślnie dodano pracownika");
             Close();
         }
-
-        private void btnCancel_Click(object sender, EventArgs e)
+            private void btnCancel_Click(object sender, EventArgs e)
         {
             employeeBindingSource.ResetBindings(false);
             AddEmployee_Load(sender, e);

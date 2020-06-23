@@ -32,10 +32,10 @@
             this.btnRegister = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label7 = new System.Windows.Forms.Label();
             this.tbConfirmPassword = new System.Windows.Forms.TextBox();
             this.tbPassword = new System.Windows.Forms.TextBox();
-            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbLastName = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
             this.tbUsername = new System.Windows.Forms.TextBox();
@@ -88,6 +88,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Role", true));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Szef",
@@ -97,6 +98,10 @@
             this.comboBox1.Size = new System.Drawing.Size(130, 21);
             this.comboBox1.TabIndex = 11;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(SoftwareManagement.Models.User);
             // 
             // label7
             // 
@@ -114,22 +119,20 @@
             this.tbConfirmPassword.Name = "tbConfirmPassword";
             this.tbConfirmPassword.Size = new System.Drawing.Size(130, 20);
             this.tbConfirmPassword.TabIndex = 9;
+            this.tbConfirmPassword.UseSystemPasswordChar = true;
             // 
             // tbPassword
             // 
-            this.tbPassword.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.userBindingSource, "Password", true));
+            this.tbPassword.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Password", true));
             this.tbPassword.Location = new System.Drawing.Point(10, 146);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(130, 20);
             this.tbPassword.TabIndex = 8;
-            // 
-            // userBindingSource
-            // 
-            this.userBindingSource.DataSource = typeof(SoftwareManagement.Models.User);
+            this.tbPassword.UseSystemPasswordChar = true;
             // 
             // tbLastName
             // 
-            this.tbLastName.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.userBindingSource, "LastName", true));
+            this.tbLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "LastName", true));
             this.tbLastName.Location = new System.Drawing.Point(316, 59);
             this.tbLastName.Name = "tbLastName";
             this.tbLastName.Size = new System.Drawing.Size(130, 20);
@@ -137,7 +140,7 @@
             // 
             // tbName
             // 
-            this.tbName.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.userBindingSource, "Name", true));
+            this.tbName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "Name", true));
             this.tbName.Location = new System.Drawing.Point(167, 59);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(130, 20);
@@ -145,7 +148,7 @@
             // 
             // tbUsername
             // 
-            this.tbUsername.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.userBindingSource, "UserName", true));
+            this.tbUsername.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "UserName", true));
             this.tbUsername.Location = new System.Drawing.Point(10, 59);
             this.tbUsername.Name = "tbUsername";
             this.tbUsername.Size = new System.Drawing.Size(130, 20);

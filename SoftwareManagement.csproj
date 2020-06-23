@@ -73,27 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\ModelContext.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006072157243_employee.cs" />
-    <Compile Include="Migrations\202006072157243_employee.designer.cs">
-      <DependentUpon>202006072157243_employee.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006161718546_product.cs" />
-    <Compile Include="Migrations\202006161718546_product.designer.cs">
-      <DependentUpon>202006161718546_product.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006161720037_ingredient.cs" />
-    <Compile Include="Migrations\202006161720037_ingredient.designer.cs">
-      <DependentUpon>202006161720037_ingredient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006211525402_User.cs" />
-    <Compile Include="Migrations\202006211525402_User.designer.cs">
-      <DependentUpon>202006211525402_User.cs</DependentUpon>
+    <Compile Include="Migrations\202006231705522_Initial.cs" />
+    <Compile Include="Migrations\202006231705522_Initial.designer.cs">
+      <DependentUpon>202006231705522_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -174,17 +156,8 @@
     <Compile Include="UserInterface\WarehouseForm\MainWarehouse.Designer.cs">
       <DependentUpon>MainWarehouse.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\202006072157243_employee.resx">
-      <DependentUpon>202006072157243_employee.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006161718546_product.resx">
-      <DependentUpon>202006161718546_product.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006161720037_ingredient.resx">
-      <DependentUpon>202006161720037_ingredient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006211525402_User.resx">
-      <DependentUpon>202006211525402_User.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202006231705522_Initial.resx">
+      <DependentUpon>202006231705522_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

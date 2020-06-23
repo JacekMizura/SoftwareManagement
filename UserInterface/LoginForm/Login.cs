@@ -16,5 +16,11 @@ namespace SoftwareManagement.UserInterface.LoginForm
         {
             InitializeComponent();
         }
+
+        private void btnLogIn_Click(object sender, EventArgs e)
+        {
+            MainForm mf = new MainForm();
+            mf.ShowDialog();
+        }
     }
 }
