@@ -1,6 +1,8 @@
-﻿using SoftwareManagement.Resources;
+﻿using SoftwareManagement.Models;
+using SoftwareManagement.Resources;
 using SoftwareManagement.UserInterface.ContractorForm;
 using SoftwareManagement.UserInterface.EmployeeForm;
+using SoftwareManagement.UserInterface.LoginForm;
 using SoftwareManagement.UserInterface.OrderForm;
 using SoftwareManagement.UserInterface.ProductForm;
 using SoftwareManagement.UserInterface.SettingForm;
@@ -19,8 +21,10 @@ using System.Xml.Serialization;
 
 namespace SoftwareManagement.UserInterface
 {
+
     public partial class MainForm : Form
     {
+        public string currentUser = Login.UserInformation.CurrentLoggedInUser;
         private Button currentButton;
         private Form activeForm;
         private Random random;
@@ -133,8 +137,6 @@ namespace SoftwareManagement.UserInterface
             currentButton = null;
             btnCloseChildForm.Visible = false;
         }
-
-
         private void btnMaximize_Click(object sender, EventArgs e)
         {
             if (WindowState == FormWindowState.Normal)
@@ -165,6 +167,11 @@ namespace SoftwareManagement.UserInterface
         private void btnWarehouse_Click(object sender, EventArgs e)
         {
             OpenChildForm(new MainWarehouse(), sender);
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            tsslUsername.Text = currentUser;
         }
     }
 }

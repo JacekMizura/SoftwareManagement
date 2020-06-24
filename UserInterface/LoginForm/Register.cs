@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,29 +30,46 @@ namespace SoftwareManagement.UserInterface.LoginForm
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+
             user.UserName = tbUsername.Text.Trim();
             user.Name = tbName.Text.Trim();
             user.LastName = tbLastName.Text.Trim();
             user.Password = tbPassword.Text.Trim();
             user.Role = comboBox1.Text.Trim();
-            using(ModelContext db = new ModelContext())
+
+            if (tbUsername.Text == "" || tbName.Text == "" || tbLastName.Text == "" || tbPassword.Text == "" || comboBox1.Text == "")
             {
-                if (user.UserID == 0)
-                    db.UserList.Add(user);
-                db.SaveChanges();
+                MessageBox.Show("Pola nie mogą być puste.");
             }
-            NextForm();
-            Close();
-            
-            
-           
+            else
+            {
+
+               
+                    using (ModelContext db = new ModelContext())
+                    {
+
+                        if (user.UserID == 0)
+                        {
+                            db.UserList.Add(user);
+                            db.SaveChanges();
+
+                        }
+                    }
+
+              
+
+                NextForm();
+                Close();
+            }
         }
+
 
         private void NextForm()
         {
             Login login = new Login();
             login.ShowDialog();
         }
+
     }
         
 }

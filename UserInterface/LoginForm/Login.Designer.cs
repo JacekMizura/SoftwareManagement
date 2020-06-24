@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -35,11 +36,13 @@
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbUser = new System.Windows.Forms.ComboBox();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnLogIn = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -83,7 +86,7 @@
             // 
             // tbPassword
             // 
-            this.tbPassword.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.tbPassword.ForeColor = System.Drawing.SystemColors.InfoText;
             this.tbPassword.Location = new System.Drawing.Point(57, 85);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(302, 20);
@@ -105,13 +108,21 @@
             // cbUser
             // 
             this.cbUser.BackColor = System.Drawing.Color.White;
-            this.cbUser.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.cbUser.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.userBindingSource, "UserName", true));
+            this.cbUser.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.userBindingSource, "UserName", true));
+            this.cbUser.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userBindingSource, "UserName", true));
+            this.cbUser.DataSource = this.userBindingSource;
+            this.cbUser.DisplayMember = "UserName";
+            this.cbUser.ForeColor = System.Drawing.SystemColors.InfoText;
             this.cbUser.FormattingEnabled = true;
             this.cbUser.Location = new System.Drawing.Point(57, 40);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(302, 21);
             this.cbUser.TabIndex = 5;
-            this.cbUser.Text = "Wybierz użytkownika";
+            // 
+            // userBindingSource
+            // 
+            this.userBindingSource.DataSource = typeof(SoftwareManagement.Models.User);
             // 
             // btnLogIn
             // 
@@ -136,12 +147,14 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -156,5 +169,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cbUser;
         private System.Windows.Forms.Button btnLogIn;
+        private System.Windows.Forms.BindingSource userBindingSource;
     }
 }

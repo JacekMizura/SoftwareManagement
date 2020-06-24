@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogOut = new System.Windows.Forms.Button();
@@ -46,15 +47,18 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsslUsername = new System.Windows.Forms.ToolStripStatusLabel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.tbUser = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelTitleBar.SuspendLayout();
             this.panelDesktop.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -297,14 +301,35 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel3.Controls.Add(this.statusStrip1);
             this.panel3.Controls.Add(this.dateTimePicker1);
-            this.panel3.Controls.Add(this.tbUser);
-            this.panel3.Controls.Add(this.label1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 634);
+            this.panel3.Location = new System.Drawing.Point(0, 629);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1120, 18);
+            this.panel3.Size = new System.Drawing.Size(1120, 23);
             this.panel3.TabIndex = 0;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
+            this.statusStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.statusStrip1.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.userBindingSource, "UserName", true));
+            this.statusStrip1.Enabled = false;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslUsername});
+            this.statusStrip1.Location = new System.Drawing.Point(0, -3);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(869, 26);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tsslUsername
+            // 
+            this.tsslUsername.BackColor = System.Drawing.Color.Transparent;
+            this.tsslUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsslUsername.Name = "tsslUsername";
+            this.tsslUsername.Size = new System.Drawing.Size(91, 21);
+            this.tsslUsername.Text = "Użytkownik";
             // 
             // dateTimePicker1
             // 
@@ -312,31 +337,18 @@
             this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.SystemColors.ControlDark;
             this.dateTimePicker1.Dock = System.Windows.Forms.DockStyle.Right;
             this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(920, 0);
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(869, 0);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dateTimePicker1.Size = new System.Drawing.Size(251, 22);
             this.dateTimePicker1.TabIndex = 2;
+            this.dateTimePicker1.Value = new System.DateTime(2020, 6, 12, 0, 0, 0, 0);
             // 
-            // tbUser
+            // userBindingSource
             // 
-            this.tbUser.BackColor = System.Drawing.Color.DarkGray;
-            this.tbUser.Dock = System.Windows.Forms.DockStyle.Left;
-            this.tbUser.Location = new System.Drawing.Point(78, 0);
-            this.tbUser.Name = "tbUser";
-            this.tbUser.ReadOnly = true;
-            this.tbUser.Size = new System.Drawing.Size(100, 20);
-            this.tbUser.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Użytkownik:";
+            this.userBindingSource.DataSource = typeof(SoftwareManagement.Models.User);
             // 
             // MainForm
             // 
@@ -350,6 +362,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -358,6 +371,9 @@
             this.panelDesktop.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -378,11 +394,12 @@
         private System.Windows.Forms.Button btnCloseChildForm;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox tbUser;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnMinimalize;
         private System.Windows.Forms.Button btnFullScreen;
         private System.Windows.Forms.Button btnLogOut;
+        public System.Windows.Forms.StatusStrip statusStrip1;
+        public System.Windows.Forms.ToolStripStatusLabel tsslUsername;
+        private System.Windows.Forms.BindingSource userBindingSource;
     }
 }
