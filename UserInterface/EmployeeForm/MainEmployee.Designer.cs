@@ -34,11 +34,11 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvEmployee = new System.Windows.Forms.DataGridView();
-            this.dgvEmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dgvEmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +71,7 @@
             this.btnSendEmail.TabIndex = 2;
             this.btnSendEmail.Text = "Wyślij e-mail";
             this.btnSendEmail.UseVisualStyleBackColor = true;
+            this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click);
             // 
             // btnDelete
             // 
@@ -118,14 +119,6 @@
             this.dgvEmployee.Size = new System.Drawing.Size(800, 418);
             this.dgvEmployee.TabIndex = 1;
             // 
-            // dgvEmpId
-            // 
-            this.dgvEmpId.ContextMenuStrip = this.contextMenuStrip;
-            this.dgvEmpId.DataPropertyName = "EmpId";
-            this.dgvEmpId.HeaderText = "ID";
-            this.dgvEmpId.Name = "dgvEmpId";
-            this.dgvEmpId.Width = 50;
-            // 
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -154,6 +147,14 @@
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
             this.infoToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.infoToolStripMenuItem.Text = "Informacje";
+            // 
+            // dgvEmpId
+            // 
+            this.dgvEmpId.ContextMenuStrip = this.contextMenuStrip;
+            this.dgvEmpId.DataPropertyName = "EmpId";
+            this.dgvEmpId.HeaderText = "ID";
+            this.dgvEmpId.Name = "dgvEmpId";
+            this.dgvEmpId.Width = 50;
             // 
             // firstNameDataGridViewTextBoxColumn
             // 

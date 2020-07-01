@@ -42,18 +42,18 @@ namespace SoftwareManagement.UserInterface.ProductForm
         private void updateToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             AddUpdate auf = new AddUpdate();
-      
-                using (ModelContext db = new ModelContext())
-                {
-                    model = db.ProductList.Where(x => x.ProductID == model.ProductID).FirstOrDefault();
-                    auf.tbName.Text = model.Name;
-                    auf.tbDate.Text = model.ExpireTime;
-                    auf.tbPrice.Text = model.Price;
-
-                }
-                LoadData();
-                auf.ShowDialog();
             
+            auf.tbName.Text = model.Name;
+            using (ModelContext db = new ModelContext())
+            {
+                model = productBindingSource.Current as Product;
+                if(model != null)
+                {
+                    db.Entry<Product>(model).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            auf.ShowDialog();
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)

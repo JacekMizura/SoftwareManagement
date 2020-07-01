@@ -45,19 +45,5 @@ namespace SoftwareManagement.UserInterface.ProductForm
             
 
         }
-
-        void PopDataGridView()
-        {
-            using (ModelContext db = new ModelContext())
-            {
-                productBindingSource.DataSource = db.ProductList.ToList<Product>();
-            }
-        }
-        void Clear()
-        {
-            tbName.Text = tbPrice.Text = tbDate.Text = tbCode.Text = "";
-            btnSave.Text = "Zapisz";
-            product.ProductID = 0;
-        }
     }
 }

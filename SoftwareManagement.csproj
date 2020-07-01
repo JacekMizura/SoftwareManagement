@@ -81,7 +81,14 @@
     <Compile Include="Migrations\202006241824574_user.designer.cs">
       <DependentUpon>202006241824574_user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007011702361_contractor.cs" />
+    <Compile Include="Migrations\202007011702361_contractor.designer.cs">
+      <DependentUpon>202007011702361_contractor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\CategoryType.cs" />
+    <Compile Include="Models\Contractor.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Product.cs" />
@@ -94,6 +101,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\ThemeColor.cs" />
+    <Compile Include="UserInterface\ContractorForm\AddContractor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInterface\ContractorForm\AddContractor.Designer.cs">
+      <DependentUpon>AddContractor.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface\ContractorForm\MainContractor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +118,12 @@
     </Compile>
     <Compile Include="UserInterface\EmployeeForm\AddEmployee.Designer.cs">
       <DependentUpon>AddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\EmployeeForm\EmailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInterface\EmployeeForm\EmailForm.Designer.cs">
+      <DependentUpon>EmailForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\EmployeeForm\MainEmployee.cs">
       <SubType>Form</SubType>
@@ -166,16 +185,25 @@
     <EmbeddedResource Include="Migrations\202006241824574_user.resx">
       <DependentUpon>202006241824574_user.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007011702361_contractor.resx">
+      <DependentUpon>202007011702361_contractor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInterface\ContractorForm\AddContractor.resx">
+      <DependentUpon>AddContractor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterface\ContractorForm\MainContractor.resx">
       <DependentUpon>MainContractor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterface\EmployeeForm\AddEmployee.resx">
       <DependentUpon>AddEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInterface\EmployeeForm\EmailForm.resx">
+      <DependentUpon>EmailForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterface\EmployeeForm\MainEmployee.resx">
       <DependentUpon>MainEmployee.cs</DependentUpon>
@@ -205,6 +233,7 @@
       <DependentUpon>MainWarehouse.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\SoftwareManagement.Models.Contractor.datasource" />
     <None Include="Properties\DataSources\SoftwareManagement.Models.Employee.datasource" />
     <None Include="Properties\DataSources\SoftwareManagement.Models.Product.datasource" />
     <None Include="Properties\DataSources\SoftwareManagement.Models.User.datasource" />

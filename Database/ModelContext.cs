@@ -17,7 +17,11 @@ namespace SoftwareManagement.Database
         public DbSet<Employee> EmployeeList { get; set; }
         public DbSet<Product> ProductList { get; set; }
         public DbSet<Ingredient> IngredientList { get; set; }
-        public DbSet<SoftwareManagement.Models.User> UserList { get; set; }
+        public DbSet<Contractor> ContractorList { get; set; }
+
+        public DbSet<Address> AddressList { get; set; }
+        public DbSet<CategoryType> CategoryTypeList { get; set; }
+        public DbSet<User> UserList { get; set; }
 
 
     }

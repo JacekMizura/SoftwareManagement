@@ -51,6 +51,7 @@ namespace SoftwareManagement.UserInterface.LoginForm
                         UserInformation.CurrentLoggedInUser = cbUser.Text.Trim();
                         MainForm mf = new MainForm();
                         mf.ShowDialog();
+                       
                         
                     }
                     else
@@ -63,6 +64,7 @@ namespace SoftwareManagement.UserInterface.LoginForm
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            Close();
         }
         private void Login_Load(object sender, EventArgs e)
         {

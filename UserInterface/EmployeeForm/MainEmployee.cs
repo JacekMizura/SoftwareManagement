@@ -110,5 +110,11 @@ namespace SoftwareManagement.UserInterface.EmployeeForm
         {
             dgvEmployee.Refresh();
         }
+
+        private void btnSendEmail_Click(object sender, EventArgs e)
+        {
+            EmailForm ef = new EmailForm();
+            ef.ShowDialog();
+        }
     }
 }
