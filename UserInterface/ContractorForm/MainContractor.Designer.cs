@@ -34,16 +34,19 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvContractor = new System.Windows.Forms.DataGridView();
-            this.contractorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.NameMain = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REGON = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contractorIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nIPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneNumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salaryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractorBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.contractorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContractor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contractorBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +71,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Dodaj";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
@@ -91,17 +95,20 @@
             // 
             // dgvContractor
             // 
+            this.dgvContractor.AllowUserToAddRows = false;
+            this.dgvContractor.AllowUserToResizeRows = false;
             this.dgvContractor.AutoGenerateColumns = false;
             this.dgvContractor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvContractor.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.contractorIDDataGridViewTextBoxColumn,
+            this.NameMain,
             this.firstNameDataGridViewTextBoxColumn,
             this.lastNameDataGridViewTextBoxColumn,
             this.nIPDataGridViewTextBoxColumn,
+            this.REGON,
             this.emailDataGridViewTextBoxColumn,
-            this.phoneNumberDataGridViewTextBoxColumn,
-            this.salaryDataGridViewTextBoxColumn});
-            this.dgvContractor.DataSource = this.contractorBindingSource;
+            this.phoneNumberDataGridViewTextBoxColumn});
+            this.dgvContractor.DataSource = this.contractorBindingSource1;
             this.dgvContractor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvContractor.Location = new System.Drawing.Point(0, 32);
             this.dgvContractor.Name = "dgvContractor";
@@ -110,9 +117,19 @@
             this.dgvContractor.Size = new System.Drawing.Size(800, 418);
             this.dgvContractor.TabIndex = 1;
             // 
-            // contractorBindingSource
+            // NameMain
             // 
-            this.contractorBindingSource.DataSource = typeof(SoftwareManagement.Models.Contractor);
+            this.NameMain.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NameMain.DataPropertyName = "Name";
+            this.NameMain.HeaderText = "Nazwa";
+            this.NameMain.Name = "NameMain";
+            // 
+            // REGON
+            // 
+            this.REGON.DataPropertyName = "REGON";
+            this.REGON.HeaderText = "REGON";
+            this.REGON.Name = "REGON";
+            this.REGON.Visible = false;
             // 
             // contractorIDDataGridViewTextBoxColumn
             // 
@@ -125,14 +142,16 @@
             // 
             this.firstNameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "Nazwa";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "";
             this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.Visible = false;
             // 
             // lastNameDataGridViewTextBoxColumn
             // 
             this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
             this.lastNameDataGridViewTextBoxColumn.HeaderText = "";
             this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.Visible = false;
             // 
             // nIPDataGridViewTextBoxColumn
             // 
@@ -155,11 +174,13 @@
             this.phoneNumberDataGridViewTextBoxColumn.Name = "phoneNumberDataGridViewTextBoxColumn";
             this.phoneNumberDataGridViewTextBoxColumn.Width = 130;
             // 
-            // salaryDataGridViewTextBoxColumn
+            // contractorBindingSource1
             // 
-            this.salaryDataGridViewTextBoxColumn.DataPropertyName = "Salary";
-            this.salaryDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.salaryDataGridViewTextBoxColumn.Name = "salaryDataGridViewTextBoxColumn";
+            this.contractorBindingSource1.DataSource = typeof(SoftwareManagement.Models.Contractor);
+            // 
+            // contractorBindingSource
+            // 
+            this.contractorBindingSource.DataSource = typeof(SoftwareManagement.Models.Contractor);
             // 
             // MainContractor
             // 
@@ -170,9 +191,11 @@
             this.Controls.Add(this.panel1);
             this.Name = "MainContractor";
             this.Text = "Kontrahenci";
+            this.Load += new System.EventHandler(this.MainContractor_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContractor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contractorBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractorBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -186,12 +209,15 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvContractor;
         private System.Windows.Forms.BindingSource contractorBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource contractorBindingSource1;
         private System.Windows.Forms.DataGridViewTextBoxColumn contractorIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameMain;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nIPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn REGON;
         private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;
     }
 }

@@ -28,7 +28,7 @@ namespace SoftwareManagement.UserInterface.ProductForm
         private void btnSave_Click(object sender, EventArgs e)
         {
             product.Name = tbName.Text.Trim();
-            product.Price = tbPrice.Text.Trim();
+            product.Price = Int32.Parse( tbPrice.Text.Trim());
             product.Code = Int32.Parse(tbCode.Text.Trim());
             product.ExpireTime = tbDate.Text.Trim();
 

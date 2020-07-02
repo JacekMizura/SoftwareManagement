@@ -33,6 +33,7 @@
             this.picProduct = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cbType = new System.Windows.Forms.ComboBox();
+            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbCode = new System.Windows.Forms.TextBox();
             this.tbPrice = new System.Windows.Forms.TextBox();
             this.tbDate = new System.Windows.Forms.TextBox();
@@ -45,13 +46,12 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.pContainer = new System.Windows.Forms.Panel();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picProduct)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.pContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            this.pContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,6 +103,10 @@
             this.cbType.Name = "cbType";
             this.cbType.Size = new System.Drawing.Size(116, 24);
             this.cbType.TabIndex = 10;
+            // 
+            // productBindingSource
+            // 
+            this.productBindingSource.DataSource = typeof(SoftwareManagement.Models.Product);
             // 
             // tbCode
             // 
@@ -213,10 +217,6 @@
             this.pContainer.Size = new System.Drawing.Size(594, 300);
             this.pContainer.TabIndex = 4;
             // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataSource = typeof(SoftwareManagement.Models.Product);
-            // 
             // productBindingSource1
             // 
             this.productBindingSource1.DataSource = typeof(SoftwareManagement.Models.Product);
@@ -234,8 +234,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.picProduct)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.pContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            this.pContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
             this.ResumeLayout(false);
 

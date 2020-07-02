@@ -26,8 +26,8 @@ namespace SoftwareManagement.UserInterface.EmployeeForm
         {
             employee.FirstName = tbName.Text.Trim();
             employee.LastName = tbLastName.Text.Trim();
-            employee.Salary = tbSalary.Text.Trim();
-            employee.PhoneNumber = tbPhoneNumber.Text.Trim();
+            employee.Salary = Int32.Parse(tbSalary.Text.Trim());
+            employee.PhoneNumber = Int32.Parse(tbPhoneNumber.Text.Trim());
             employee.Email = tbEmail.Text.Trim();
 
             using (ModelContext db = new ModelContext())

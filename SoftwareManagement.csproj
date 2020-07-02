@@ -73,17 +73,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\ModelContext.cs" />
-    <Compile Include="Migrations\202006231705522_Initial.cs" />
-    <Compile Include="Migrations\202006231705522_Initial.designer.cs">
-      <DependentUpon>202006231705522_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202006241824574_user.cs" />
-    <Compile Include="Migrations\202006241824574_user.designer.cs">
-      <DependentUpon>202006241824574_user.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202007011702361_contractor.cs" />
-    <Compile Include="Migrations\202007011702361_contractor.designer.cs">
-      <DependentUpon>202007011702361_contractor.cs</DependentUpon>
+    <Compile Include="Migrations\202007021657546_InitialCreate.cs" />
+    <Compile Include="Migrations\202007021657546_InitialCreate.designer.cs">
+      <DependentUpon>202007021657546_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
@@ -179,14 +171,8 @@
     <Compile Include="UserInterface\WarehouseForm\MainWarehouse.Designer.cs">
       <DependentUpon>MainWarehouse.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\202006231705522_Initial.resx">
-      <DependentUpon>202006231705522_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202006241824574_user.resx">
-      <DependentUpon>202006241824574_user.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202007011702361_contractor.resx">
-      <DependentUpon>202007011702361_contractor.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202007021657546_InitialCreate.resx">
+      <DependentUpon>202007021657546_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -17,9 +17,10 @@ namespace SoftwareManagement.Models
         public string LastName { get; set; }
         public List<Address> Addresses { get; set; }
         public List<CategoryType> CategoryTypes { get; set; }
-        public string NIP { get; set; }
+        public int NIP { get; set; }
         public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Salary { get; set; }
+        public int PhoneNumber { get; set; }
+        public int REGON { get; set; }
+        public string Name { get; set; }
     }
 }

@@ -66,8 +66,8 @@ namespace SoftwareManagement.UserInterface.EmployeeForm
                     ae.tbName.Text = model.FirstName;
                     ae.tbLastName.Text = model.LastName;
                     ae.tbEmail.Text = model.Email;
-                    ae.tbPhoneNumber.Text = model.PhoneNumber;
-                    ae.tbSalary.Text = model.Salary;
+                    ae.tbPhoneNumber.Text = (Convert.ToInt32(model.PhoneNumber)).ToString();
+                    ae.tbSalary.Text = (Convert.ToInt32(model.Salary)).ToString();
                   
                 }
                 LoadData();

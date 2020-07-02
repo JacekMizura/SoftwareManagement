@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftwareManagement.Database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,24 @@ namespace SoftwareManagement.UserInterface.ContractorForm
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddContractor ac = new AddContractor();
+            ac.ShowDialog();
+        }
+        void LoadData()
+        {
+            using (ModelContext db = new ModelContext())
+            {
+                contractorBindingSource1.DataSource = db.ContractorList.ToList();
+            }
+        }
+
+        private void MainContractor_Load(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }
