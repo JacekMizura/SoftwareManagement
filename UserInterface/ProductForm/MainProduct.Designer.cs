@@ -29,155 +29,198 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAddProduct = new System.Windows.Forms.Button();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnInfo = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expireTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productTypeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.productTypeBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.ProductType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.validityTermDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inventoryItemsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productDetailsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
-            this.contextMenuStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productTypeBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productTypeBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.LightGray;
-            this.panel1.Controls.Add(this.btnAddProduct);
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panel1.Controls.Add(this.tbSearch);
+            this.panel1.Controls.Add(this.btnDelete);
+            this.panel1.Controls.Add(this.btnInfo);
+            this.panel1.Controls.Add(this.btnUpdate);
+            this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1104, 32);
+            this.panel1.Size = new System.Drawing.Size(800, 30);
             this.panel1.TabIndex = 0;
             // 
-            // btnAddProduct
+            // tbSearch
             // 
-            this.btnAddProduct.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnAddProduct.Location = new System.Drawing.Point(0, 0);
-            this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(95, 32);
-            this.btnAddProduct.TabIndex = 0;
-            this.btnAddProduct.Text = "Dodaj produkt";
-            this.btnAddProduct.UseVisualStyleBackColor = true;
-            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
+            this.tbSearch.Location = new System.Drawing.Point(439, 6);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(153, 20);
+            this.tbSearch.TabIndex = 4;
+            this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Search);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDelete.Location = new System.Drawing.Point(225, 0);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 30);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Usun";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnInfo
+            // 
+            this.btnInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnInfo.Location = new System.Drawing.Point(150, 0);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(75, 30);
+            this.btnInfo.TabIndex = 2;
+            this.btnInfo.Text = "Informacje";
+            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnUpdate.Location = new System.Drawing.Point(75, 0);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 30);
+            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.Text = "Modyfikuj";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnAdd.Location = new System.Drawing.Point(0, 0);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 30);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Dodaj";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dgvProduct
             // 
-            this.dgvProduct.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Aqua;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvProduct.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProduct.AutoGenerateColumns = false;
-            this.dgvProduct.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProduct.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvProduct.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProduct.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProduct.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductType,
             this.productIDDataGridViewTextBoxColumn,
-            this.nameDataGridViewTextBoxColumn,
             this.codeDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
             this.priceDataGridViewTextBoxColumn,
-            this.expireTimeDataGridViewTextBoxColumn,
-            this.typeDataGridViewTextBoxColumn});
-            this.dgvProduct.ContextMenuStrip = this.contextMenuStrip;
-            this.dgvProduct.DataSource = this.productBindingSource;
+            this.validityTermDataGridViewTextBoxColumn,
+            this.imageDataGridViewTextBoxColumn,
+            this.inventoryItemsDataGridViewTextBoxColumn,
+            this.productDetailsDataGridViewTextBoxColumn});
+            this.dgvProduct.DataSource = this.productBindingSource2;
             this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvProduct.Location = new System.Drawing.Point(0, 32);
-            this.dgvProduct.MultiSelect = false;
+            this.dgvProduct.Location = new System.Drawing.Point(0, 30);
             this.dgvProduct.Name = "dgvProduct";
             this.dgvProduct.RowHeadersVisible = false;
-            this.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProduct.Size = new System.Drawing.Size(1104, 581);
+            this.dgvProduct.Size = new System.Drawing.Size(800, 420);
             this.dgvProduct.TabIndex = 1;
             // 
-            // contextMenuStrip
+            // productBindingSource2
             // 
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.updateToolStripMenuItem,
-            this.deleteToolStripMenuItem,
-            this.infoToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(132, 70);
-            // 
-            // updateToolStripMenuItem
-            // 
-            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.updateToolStripMenuItem.Text = "Aktualizuj";
-            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click_1);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.deleteToolStripMenuItem.Text = "Usuń";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // infoToolStripMenuItem
-            // 
-            this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
-            this.infoToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-            this.infoToolStripMenuItem.Text = "Informacje";
-            // 
-            // productIDDataGridViewTextBoxColumn
-            // 
-            this.productIDDataGridViewTextBoxColumn.ContextMenuStrip = this.contextMenuStrip;
-            this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
-            this.productIDDataGridViewTextBoxColumn.HeaderText = "ProductID";
-            this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
-            this.productIDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nameDataGridViewTextBoxColumn
-            // 
-            this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Nazwa produktu";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Kod produktu";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            this.codeDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Cena";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            // 
-            // expireTimeDataGridViewTextBoxColumn
-            // 
-            this.expireTimeDataGridViewTextBoxColumn.DataPropertyName = "ExpireTime";
-            this.expireTimeDataGridViewTextBoxColumn.HeaderText = "Data przydatności";
-            this.expireTimeDataGridViewTextBoxColumn.Name = "expireTimeDataGridViewTextBoxColumn";
-            this.expireTimeDataGridViewTextBoxColumn.Width = 140;
-            // 
-            // typeDataGridViewTextBoxColumn
-            // 
-            this.typeDataGridViewTextBoxColumn.DataPropertyName = "Type";
-            this.typeDataGridViewTextBoxColumn.HeaderText = "Rodzaj";
-            this.typeDataGridViewTextBoxColumn.Name = "typeDataGridViewTextBoxColumn";
+            this.productBindingSource2.DataSource = typeof(SoftwareManagement.Models.Product);
             // 
             // productBindingSource
             // 
             this.productBindingSource.DataSource = typeof(SoftwareManagement.Models.Product);
             // 
+            // productBindingSource1
+            // 
+            this.productBindingSource1.DataSource = typeof(SoftwareManagement.Models.Product);
+            // 
+            // ProductType
+            // 
+            this.ProductType.DataPropertyName = "ProductTypes";
+            this.ProductType.HeaderText = "Rodzaj";
+            this.ProductType.Name = "ProductType";
+            // 
+            // productIDDataGridViewTextBoxColumn
+            // 
+            this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
+            this.productIDDataGridViewTextBoxColumn.HeaderText = "ProductID";
+            this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            // 
+            // validityTermDataGridViewTextBoxColumn
+            // 
+            this.validityTermDataGridViewTextBoxColumn.DataPropertyName = "ValidityTerm";
+            this.validityTermDataGridViewTextBoxColumn.HeaderText = "ValidityTerm";
+            this.validityTermDataGridViewTextBoxColumn.Name = "validityTermDataGridViewTextBoxColumn";
+            // 
+            // imageDataGridViewTextBoxColumn
+            // 
+            this.imageDataGridViewTextBoxColumn.DataPropertyName = "Image";
+            this.imageDataGridViewTextBoxColumn.HeaderText = "Image";
+            this.imageDataGridViewTextBoxColumn.Name = "imageDataGridViewTextBoxColumn";
+            // 
+            // inventoryItemsDataGridViewTextBoxColumn
+            // 
+            this.inventoryItemsDataGridViewTextBoxColumn.DataPropertyName = "InventoryItems";
+            this.inventoryItemsDataGridViewTextBoxColumn.HeaderText = "InventoryItems";
+            this.inventoryItemsDataGridViewTextBoxColumn.Name = "inventoryItemsDataGridViewTextBoxColumn";
+            // 
+            // productDetailsDataGridViewTextBoxColumn
+            // 
+            this.productDetailsDataGridViewTextBoxColumn.DataPropertyName = "ProductDetails";
+            this.productDetailsDataGridViewTextBoxColumn.HeaderText = "ProductDetails";
+            this.productDetailsDataGridViewTextBoxColumn.Name = "productDetailsDataGridViewTextBoxColumn";
+            // 
             // MainProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1104, 613);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.dgvProduct);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -185,9 +228,13 @@
             this.Text = "Produkty";
             this.Load += new System.EventHandler(this.MainProduct_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
-            this.contextMenuStrip.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productTypeBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productTypeBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -195,19 +242,27 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnAddProduct;
-        private System.Windows.Forms.BindingSource productBindingSource;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnInfo;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.DataGridView dgvProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn ingredientsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem infoToolStripMenuItem;
-        public System.Windows.Forms.DataGridView dgvProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn expireTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource productBindingSource;
+        private System.Windows.Forms.BindingSource productBindingSource2;
+        private System.Windows.Forms.BindingSource productTypeBindingSource;
+        private System.Windows.Forms.BindingSource productTypeBindingSource1;
+        private System.Windows.Forms.BindingSource productBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn validityTermDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn imageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inventoryItemsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productDetailsDataGridViewTextBoxColumn;
     }
 }

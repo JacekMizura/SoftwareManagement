@@ -9,6 +9,7 @@ namespace SoftwareManagement.Models
 {
     public class User
     {
+
         [Key]
         public int UserID { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Pole wymagane")]

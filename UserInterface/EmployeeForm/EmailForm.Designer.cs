@@ -113,6 +113,7 @@
             this.Controls.Add(this.tbTo);
             this.Name = "EmailForm";
             this.Text = "Poczta";
+            this.Load += new System.EventHandler(this.EmailForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

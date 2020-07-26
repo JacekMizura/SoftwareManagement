@@ -73,17 +73,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\ModelContext.cs" />
-    <Compile Include="Migrations\202007021657546_InitialCreate.cs" />
-    <Compile Include="Migrations\202007021657546_InitialCreate.designer.cs">
-      <DependentUpon>202007021657546_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202007131815459_Init.cs" />
+    <Compile Include="Migrations\202007131815459_Init.designer.cs">
+      <DependentUpon>202007131815459_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007141728247_PT.cs" />
+    <Compile Include="Migrations\202007141728247_PT.designer.cs">
+      <DependentUpon>202007141728247_PT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007161640248_valid.cs" />
+    <Compile Include="Migrations\202007161640248_valid.designer.cs">
+      <DependentUpon>202007161640248_valid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007201652588_new.cs" />
+    <Compile Include="Migrations\202007201652588_new.designer.cs">
+      <DependentUpon>202007201652588_new.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007241656254_newes.cs" />
+    <Compile Include="Migrations\202007241656254_newes.designer.cs">
+      <DependentUpon>202007241656254_newes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007251047250_productType.cs" />
+    <Compile Include="Migrations\202007251047250_productType.designer.cs">
+      <DependentUpon>202007251047250_productType.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\CategoryType.cs" />
     <Compile Include="Models\Contractor.cs" />
     <Compile Include="Models\Employee.cs" />
-    <Compile Include="Models\Ingredient.cs" />
+    <Compile Include="Models\InventoryItem.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductType.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,6 +118,12 @@
     </Compile>
     <Compile Include="UserInterface\ContractorForm\AddContractor.Designer.cs">
       <DependentUpon>AddContractor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ContractorForm\InfoUpdateContractor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInterface\ContractorForm\InfoUpdateContractor.Designer.cs">
+      <DependentUpon>InfoUpdateContractor.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\ContractorForm\MainContractor.cs">
       <SubType>Form</SubType>
@@ -116,6 +142,12 @@
     </Compile>
     <Compile Include="UserInterface\EmployeeForm\EmailForm.Designer.cs">
       <DependentUpon>EmailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\EmployeeForm\InfoEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInterface\EmployeeForm\InfoEmployee.Designer.cs">
+      <DependentUpon>InfoEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\EmployeeForm\MainEmployee.cs">
       <SubType>Form</SubType>
@@ -147,11 +179,17 @@
     <Compile Include="UserInterface\OrderForm\MainOrders.Designer.cs">
       <DependentUpon>MainOrders.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserInterface\ProductForm\AddUpdate.cs">
+    <Compile Include="UserInterface\ProductForm\AddUpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserInterface\ProductForm\AddUpdate.Designer.cs">
-      <DependentUpon>AddUpdate.cs</DependentUpon>
+    <Compile Include="UserInterface\ProductForm\AddUpdateForm.Designer.cs">
+      <DependentUpon>AddUpdateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\ProductForm\InfoProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserInterface\ProductForm\InfoProduct.Designer.cs">
+      <DependentUpon>InfoProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\ProductForm\MainProduct.cs">
       <SubType>Form</SubType>
@@ -171,8 +209,23 @@
     <Compile Include="UserInterface\WarehouseForm\MainWarehouse.Designer.cs">
       <DependentUpon>MainWarehouse.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\202007021657546_InitialCreate.resx">
-      <DependentUpon>202007021657546_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202007131815459_Init.resx">
+      <DependentUpon>202007131815459_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007141728247_PT.resx">
+      <DependentUpon>202007141728247_PT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007161640248_valid.resx">
+      <DependentUpon>202007161640248_valid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007201652588_new.resx">
+      <DependentUpon>202007201652588_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007241656254_newes.resx">
+      <DependentUpon>202007241656254_newes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007251047250_productType.resx">
+      <DependentUpon>202007251047250_productType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -182,6 +235,9 @@
     <EmbeddedResource Include="UserInterface\ContractorForm\AddContractor.resx">
       <DependentUpon>AddContractor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserInterface\ContractorForm\InfoUpdateContractor.resx">
+      <DependentUpon>InfoUpdateContractor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserInterface\ContractorForm\MainContractor.resx">
       <DependentUpon>MainContractor.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,6 +246,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterface\EmployeeForm\EmailForm.resx">
       <DependentUpon>EmailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInterface\EmployeeForm\InfoEmployee.resx">
+      <DependentUpon>InfoEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterface\EmployeeForm\MainEmployee.resx">
       <DependentUpon>MainEmployee.cs</DependentUpon>
@@ -206,8 +265,11 @@
     <EmbeddedResource Include="UserInterface\OrderForm\MainOrders.resx">
       <DependentUpon>MainOrders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserInterface\ProductForm\AddUpdate.resx">
-      <DependentUpon>AddUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="UserInterface\ProductForm\AddUpdateForm.resx">
+      <DependentUpon>AddUpdateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserInterface\ProductForm\InfoProduct.resx">
+      <DependentUpon>InfoProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserInterface\ProductForm\MainProduct.resx">
       <DependentUpon>MainProduct.cs</DependentUpon>
@@ -221,7 +283,9 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\SoftwareManagement.Models.Contractor.datasource" />
     <None Include="Properties\DataSources\SoftwareManagement.Models.Employee.datasource" />
+    <None Include="Properties\DataSources\SoftwareManagement.Models.Ingredient.datasource" />
     <None Include="Properties\DataSources\SoftwareManagement.Models.Product.datasource" />
+    <None Include="Properties\DataSources\SoftwareManagement.Models.ProductType.datasource" />
     <None Include="Properties\DataSources\SoftwareManagement.Models.User.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -268,6 +332,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Class\" />
+    <Folder Include="Models\Dictionaries\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

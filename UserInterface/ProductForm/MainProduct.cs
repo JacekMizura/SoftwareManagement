@@ -1,10 +1,8 @@
 ﻿using SoftwareManagement.Database;
-using SoftwareManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -15,66 +13,85 @@ namespace SoftwareManagement.UserInterface.ProductForm
 {
     public partial class MainProduct : Form
     {
-        Product model = new Product();
+        ModelContext db = new ModelContext();
         public MainProduct()
         {
             InitializeComponent();
+            dgvProduct.FirstDisplayedCell = null;
+            dgvProduct.ClearSelection();
+
+            LoadData();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddUpdateForm auf = new AddUpdateForm(0);
+            auf.ShowDialog();
+            LoadData();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            AddUpdateForm auf = new AddUpdateForm(Convert.ToInt32(this.dgvProduct.CurrentRow.Cells[0].Value));
+            auf.ShowDialog();
+            LoadData();
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            InfoProduct auf = new InfoProduct(Convert.ToInt32(this.dgvProduct.CurrentRow.Cells[0].Value));
+            auf.ShowDialog();
+            LoadData();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            Delete();
         }
 
         private void MainProduct_Load(object sender, EventArgs e)
         {
-            LoadData();
+
         }
 
-        private void btnAddProduct_Click(object sender, EventArgs e)
+       
+        private void Search(object sender, KeyPressEventArgs e)
         {
-            AddUpdate au = new AddUpdate();
-            au.ShowDialog();
+            if (tbSearch.Text.Trim().Length < 1)
+            {
+                dgvProduct.DataSource = db.ProductList.ToList();
+            }
+            else
+            {
+                dgvProduct.DataSource = (from db in db.ProductList
+                                          where
+               db.Name.Contains(tbSearch.Text.Trim()) ||
+               db.Code.ToString().Contains(tbSearch.Text.Trim()) ||
+               db.Price.ToString().Contains(tbSearch.Text.Trim())
+                                          select db).ToList();
+            }
         }
         void LoadData()
-        {           
-            using (ModelContext db = new ModelContext())
-            {
-                productBindingSource.DataSource = db.ProductList.ToList();
-            }
-        }
-
-        private void updateToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            AddUpdate auf = new AddUpdate();
+            int saveRow = 0;
+            if (dgvProduct.Rows.Count > 0)
+                saveRow = dgvProduct.FirstDisplayedCell.RowIndex;
+            ModelContext db = new ModelContext();
+            dgvProduct.DataSource = db.ProductList.ToList();
+            if (saveRow != 0 && saveRow < dgvProduct.Rows.Count)
+                dgvProduct.FirstDisplayedScrollingRowIndex = saveRow;
             
-            auf.tbName.Text = model.Name;
-            using (ModelContext db = new ModelContext())
-            {
-                model = productBindingSource.Current as Product;
-                if(model != null)
-                {
-                    db.Entry<Product>(model).State = EntityState.Modified;
-                    db.SaveChanges();
-                }
-            }
-            auf.ShowDialog();
-        }
 
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        }
+        void Delete()
         {
             if (MessageBox.Show("Jesteś pewien że chcesz usunąć te dane", "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                using (ModelContext db = new ModelContext())
-                {
-
-                    Product product = productBindingSource.Current as Product;
-                    if (product != null)
-                    {
-                        if (db.Entry<Product>(product).State == EntityState.Detached)
-                            db.Set<Product>().Attach(product);
-                        db.Entry<Product>(product).State = EntityState.Deleted;
-                        db.SaveChanges();
-                        productBindingSource.RemoveCurrent();
-
-                    }
-                    MessageBox.Show("Pomyślnie usunięto dane");
-                }
+                int productId = Convert.ToInt32(this.dgvProduct.CurrentRow.Cells[0].Value);
+                var product = db.ProductList.FirstOrDefault(a => a.ProductID == productId);
+                db.ProductList.Remove(product);
+                db.SaveChanges();
+                LoadData();
             }
         }
     }

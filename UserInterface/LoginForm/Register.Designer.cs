@@ -93,7 +93,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(130, 21);
             this.comboBox1.TabIndex = 11;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // userBindingSource
             // 
@@ -234,6 +233,7 @@
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
+            this.Load += new System.EventHandler(this.Register_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();

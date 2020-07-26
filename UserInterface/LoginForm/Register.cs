@@ -16,52 +16,37 @@ namespace SoftwareManagement.UserInterface.LoginForm
 {
     public partial class Register : Form
     {
-        User user = new User();
-        public Register()
+        ModelContext db = new ModelContext();
+        static int id;
+        public Register(int recordId)
         {
             InitializeComponent();
+            id = recordId;
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-
-            user.UserName = tbUsername.Text.Trim();
-            user.Name = tbName.Text.Trim();
-            user.LastName = tbLastName.Text.Trim();
-            user.Password = tbPassword.Text.Trim();
-            user.Role = comboBox1.Text.Trim();
-
-            if (tbUsername.Text == "" || tbName.Text == "" || tbLastName.Text == "" || tbPassword.Text == "" || comboBox1.Text == "")
+            if (id > 0)
             {
-                MessageBox.Show("Pola nie mogą być puste.");
+                var user = db.UserList.FirstOrDefault(a => a.UserID == id);
+                user.UserName = tbUsername.Text.Trim();
+                user.Name = tbName.Text.Trim();
+                user.LastName = tbLastName.Text.Trim();
+                user.Password = tbPassword.Text.Trim();
+                user.Role = comboBox1.Text.Trim();
+                db.SaveChanges();
             }
             else
             {
-
-               
-                    using (ModelContext db = new ModelContext())
-                    {
-
-                        if (user.UserID == 0)
-                        {
-                            db.UserList.Add(user);
-                            db.SaveChanges();
-
-                        }
-                    }
-
-              
-
-                NextForm();
-                Close();
+                db.UserList.Add(new User { UserName = tbUsername.Text.Trim(), Name = tbName.Text.Trim(), LastName = tbLastName.Text.Trim(), Password = tbPassword.Text.Trim(), Role = comboBox1.Text.Trim() });
+                db.SaveChanges();
             }
-        }
+            MessageBox.Show("Pomyślnie dodano pracownika");
+            Close();
+            }
+    
 
 
         private void NextForm()
@@ -70,6 +55,21 @@ namespace SoftwareManagement.UserInterface.LoginForm
             login.ShowDialog();
         }
 
+        private void Register_Load(object sender, EventArgs e)
+        {
+            if (id > 0)
+            {
+                var user = db.UserList.FirstOrDefault(a => a.UserID == id);
+                if (user != null)
+                {
+                    tbUsername.Text = user.UserName;
+                    tbName.Text = user.Name;
+                    tbLastName.Text = user.LastName;
+                    tbPassword.Text = user.Password;
+                    comboBox1.Text = user.Role.ToString();
+                }
+            }
+        }
     }
         
 }

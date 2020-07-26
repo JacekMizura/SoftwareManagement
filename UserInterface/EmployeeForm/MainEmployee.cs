@@ -16,7 +16,7 @@ namespace SoftwareManagement.UserInterface.EmployeeForm
 {
     public partial class MainEmployee : Form
     {
-        Employee model = new Employee();
+        ModelContext db = new ModelContext();
         public MainEmployee()
         {
             InitializeComponent();
@@ -50,71 +50,96 @@ namespace SoftwareManagement.UserInterface.EmployeeForm
 
             private void btnAdd_Click(object sender, EventArgs e)
         {
-            AddEmployee frm = new AddEmployee();
+            AddEmployee frm = new AddEmployee(0);
             frm.ShowDialog();
+            LoadData();
         }
 
         private void updateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddEmployee ae = new AddEmployee();
-            if(dgvEmployee.CurrentRow.Index != -1)
-            {
-                model.EmpId = Convert.ToInt32(dgvEmployee.CurrentRow.Cells["dgvEmpId"].Value);
-                using(ModelContext db = new ModelContext())
-                {
-                    model = db.EmployeeList.Where(x => x.EmpId == model.EmpId).FirstOrDefault();
-                    ae.tbName.Text = model.FirstName;
-                    ae.tbLastName.Text = model.LastName;
-                    ae.tbEmail.Text = model.Email;
-                    ae.tbPhoneNumber.Text = (Convert.ToInt32(model.PhoneNumber)).ToString();
-                    ae.tbSalary.Text = (Convert.ToInt32(model.Salary)).ToString();
-                  
-                }
-                LoadData();
-                ae.ShowDialog();
-            }
-        }
-
-        void LoadData()
-        {
-            using (ModelContext db = new ModelContext())
-            {
-                employeeBindingSource.DataSource = db.EmployeeList.ToList();
-            }
-        }
-
+            AddEmployee ae = new AddEmployee(Convert.ToInt32(this.dgvEmployee.CurrentRow.Cells[0].Value));
+             ae.ShowDialog();
+            LoadData();
+         }
+       
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(MessageBox.Show("Jesteś pewien że chcesz usunąć te dane","Message", MessageBoxButtons.YesNo)==DialogResult.Yes)
-            {
-                using(ModelContext db = new ModelContext())
-                {
-
-                    Employee employee = employeeBindingSource.Current as Employee;
-                    if(employee != null)
-                    {
-                        if (db.Entry<Employee>(employee).State == EntityState.Detached)
-                            db.Set<Employee>().Attach(employee);
-                        db.Entry<Employee>(employee).State = EntityState.Deleted;
-                        db.SaveChanges();
-                        employeeBindingSource.RemoveCurrent();
-                        
-                    }
-                    MessageBox.Show("Pomyślnie usunięto dane");
-                }
-            }
+            Delete();
         }
 
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            dgvEmployee.Refresh();
+            Delete();
         }
 
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
-            EmailForm ef = new EmailForm();
+            EmailForm ef = new EmailForm(Convert.ToInt32(this.dgvEmployee.CurrentRow.Cells[0].Value));
             ef.ShowDialog();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            AddEmployee ae = new AddEmployee(Convert.ToInt32(this.dgvEmployee.CurrentRow.Cells[0].Value));
+            ae.ShowDialog();
+            LoadData();
+        }
+
+        void Delete()
+        {
+            if (MessageBox.Show("Jesteś pewien że chcesz usunąć te dane", "Message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                int empId = Convert.ToInt32(this.dgvEmployee.CurrentRow.Cells[0].Value);
+                var employee = db.EmployeeList.FirstOrDefault(a => a.EmpID == empId);
+                db.EmployeeList.Remove(employee);
+                db.SaveChanges();
+                LoadData();
+            }
+        }
+
+        void LoadData()
+        {
+            int saveRow = 0;
+            if (dgvEmployee.Rows.Count > 0)
+                saveRow = dgvEmployee.FirstDisplayedCell.RowIndex;
+            ModelContext db = new ModelContext();
+            dgvEmployee.DataSource = db.EmployeeList.ToList();
+            if (saveRow != 0 && saveRow < dgvEmployee.Rows.Count)
+                dgvEmployee.FirstDisplayedScrollingRowIndex = saveRow;
+
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            InfoEmployee ae = new InfoEmployee(Convert.ToInt32(this.dgvEmployee.CurrentRow.Cells[0].Value));
+            ae.ShowDialog();
+            LoadData();
+        }
+
+        private void infoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            InfoEmployee ae = new InfoEmployee(Convert.ToInt32(this.dgvEmployee.CurrentRow.Cells[0].Value));
+            ae.ShowDialog();
+            LoadData();
+        }
+
+        private void Search(object sender, KeyPressEventArgs e)
+        {
+            if(tbSearch.Text.Trim().Length <1)
+            {
+                dgvEmployee.DataSource = db.EmployeeList.ToList();
+            }
+            else
+            {
+                dgvEmployee.DataSource = (from db in db.EmployeeList
+                                          where
+               db.FirstName.Contains(tbSearch.Text.Trim()) ||
+               db.LastName.Contains(tbSearch.Text.Trim()) ||
+               db.PhoneNumber.Contains(tbSearch.Text.Trim()) ||
+               db.Email.Contains(tbSearch.Text.Trim())
+                                          select db).ToList();
+            }
         }
     }
 }

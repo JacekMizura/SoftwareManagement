@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbSearch = new System.Windows.Forms.TextBox();
+            this.btnInfo = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnSendEmail = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -38,6 +41,7 @@
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.infoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgvEmpId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +57,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.tbSearch);
+            this.panel1.Controls.Add(this.btnInfo);
+            this.panel1.Controls.Add(this.btnEdit);
             this.panel1.Controls.Add(this.btnSendEmail);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.btnAdd);
@@ -62,12 +70,43 @@
             this.panel1.Size = new System.Drawing.Size(800, 32);
             this.panel1.TabIndex = 0;
             // 
+            // tbSearch
+            // 
+            this.tbSearch.Location = new System.Drawing.Point(483, 6);
+            this.tbSearch.Name = "tbSearch";
+            this.tbSearch.Size = new System.Drawing.Size(197, 20);
+            this.tbSearch.TabIndex = 5;
+            this.tbSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Search);
+            // 
+            // btnInfo
+            // 
+            this.btnInfo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnInfo.Location = new System.Drawing.Point(300, 0);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(100, 32);
+            this.btnInfo.TabIndex = 4;
+            this.btnInfo.Text = "Informacje";
+            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnEdit.Location = new System.Drawing.Point(200, 0);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(100, 32);
+            this.btnEdit.TabIndex = 3;
+            this.btnEdit.Text = "Modyfikuj";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // btnSendEmail
             // 
             this.btnSendEmail.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSendEmail.Location = new System.Drawing.Point(669, 0);
+            this.btnSendEmail.Location = new System.Drawing.Point(693, 0);
             this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(131, 32);
+            this.btnSendEmail.Size = new System.Drawing.Size(107, 32);
             this.btnSendEmail.TabIndex = 2;
             this.btnSendEmail.Text = "Wyślij e-mail";
             this.btnSendEmail.UseVisualStyleBackColor = true;
@@ -147,6 +186,17 @@
             this.infoToolStripMenuItem.Name = "infoToolStripMenuItem";
             this.infoToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.infoToolStripMenuItem.Text = "Informacje";
+            this.infoToolStripMenuItem.Click += new System.EventHandler(this.infoToolStripMenuItem_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(416, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Szukaj:";
             // 
             // dgvEmpId
             // 
@@ -207,6 +257,7 @@
             this.Text = "Pracownicy";
             this.Load += new System.EventHandler(this.MainEmployee_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEmployee)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
@@ -232,5 +283,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneNumberDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn salaryDataGridViewTextBoxColumn;
         public System.Windows.Forms.DataGridView dgvEmployee;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnInfo;
+        private System.Windows.Forms.TextBox tbSearch;
+        private System.Windows.Forms.Label label1;
     }
 }

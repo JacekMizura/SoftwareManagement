@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,30 +15,49 @@ namespace SoftwareManagement.UserInterface.ContractorForm
 {
     public partial class AddContractor : Form
     {
-        Contractor contractor = new Contractor();
+        ModelContext db = new ModelContext();
+
         public AddContractor()
         {
             InitializeComponent();
+            tbNIP.MaxLength = 10;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            contractor.FirstName = tbFirstName.Text.Trim();
-            contractor.LastName = tbLastName.Text.Trim();
-            contractor.Email = tbEmail.Text.Trim();
-            contractor.Name = tbName.Text.Trim();
-            contractor.PhoneNumber = Int32.Parse(tbPhoneNumber.Text.Trim());
-            contractor.NIP = Int32.Parse(tbNIP.Text.Trim());
-
-            using (ModelContext db = new ModelContext())
+            using (db = new ModelContext())
             {
-                if (contractor.ContractorID == 0)
-                    db.ContractorList.Add(contractor);
+                var contractor = new Contractor
+                {
+                    Name = tbName.Text.ToString(),
+                    FirstName = tbFirstName.Text.ToString(),
+                    LastName = tbLastName.Text.ToString(),
+                    REGON = tbREGON.Text.ToString(),
+                    NIP = tbNIP.Text.Length.ToString(),
+                    PhoneNumber = tbPhoneNumber.Text.ToString(),
+                    Email = tbEmail.Text.ToString(),
+                    Addresses = new List<Address>
+                    {
+                        new Address
+                        {
+                            Street = tbStreet.Text.ToString(),
+                            City = tbCity.Text.ToString(),
+                            StreetNumber = tbHomeNr.Text.ToString(),
+                            BuildingNumber = tbFlatNr.Text.ToString(),
+                            ZipCode = Int32.Parse(tbPostCode.Text),
+                        }
+                    }
+                };
+                db.ContractorList.Add(contractor);
                 db.SaveChanges();
+                Close();
+            }
+        }
 
-    }
-            MessageBox.Show("Pomyślnie dodano kontrahenta");
-            Close();
+            private void AddContractor_Load(object sender, EventArgs e)
+            {
+
+            }
         }
     }
-}
+

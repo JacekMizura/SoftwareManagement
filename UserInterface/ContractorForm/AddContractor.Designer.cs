@@ -52,6 +52,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.tbPhoneNumber = new System.Windows.Forms.TextBox();
+            this.contractorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -60,12 +61,11 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.contractorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contractorBindingSource)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -296,6 +296,10 @@
             this.tbPhoneNumber.Size = new System.Drawing.Size(121, 22);
             this.tbPhoneNumber.TabIndex = 2;
             // 
+            // contractorBindingSource
+            // 
+            this.contractorBindingSource.DataSource = typeof(SoftwareManagement.Models.Contractor);
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label11);
@@ -360,6 +364,9 @@
             // cbStatus
             // 
             this.cbStatus.FormattingEnabled = true;
+            this.cbStatus.Items.AddRange(new object[] {
+            "Firma",
+            "Osoba fizyczna"});
             this.cbStatus.Location = new System.Drawing.Point(237, 12);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(121, 21);
@@ -374,10 +381,6 @@
             this.label13.Size = new System.Drawing.Size(66, 24);
             this.label13.TabIndex = 6;
             this.label13.Text = "Status";
-            // 
-            // contractorBindingSource
-            // 
-            this.contractorBindingSource.DataSource = typeof(SoftwareManagement.Models.Contractor);
             // 
             // AddContractor
             // 
@@ -395,15 +398,16 @@
             this.Name = "AddContractor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddContractor";
+            this.Load += new System.EventHandler(this.AddContractor_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contractorBindingSource)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.contractorBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

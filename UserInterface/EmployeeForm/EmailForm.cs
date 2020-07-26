@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftwareManagement.Database;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,13 +15,22 @@ namespace SoftwareManagement.UserInterface.EmployeeForm
 {
     public partial class EmailForm : Form
     {
-        public EmailForm()
+        ModelContext db = new ModelContext();
+        static int id;
+        public EmailForm(int recordId)
         {
             InitializeComponent();
+            id = recordId;
         }
 
         private void btnSendEmail_Click(object sender, EventArgs e)
         {
+            if (id > 0)
+            {
+                var employee = db.EmployeeList.FirstOrDefault(a => a.EmpID == id);
+                employee.Email = tbTo.Text.Trim();
+
+            }
             MailMessage mm = new MailMessage("jmizurka@gmail.com", tbTo.Text);
             mm.Subject = tbSubject.Text;
             mm.Body = tbText.Text;
@@ -35,5 +45,18 @@ namespace SoftwareManagement.UserInterface.EmployeeForm
             MessageBox.Show("Pomyślnie wysłano e-mail");
             Close();
         }
+
+        private void EmailForm_Load(object sender, EventArgs e)
+        {
+            if (id > 0)
+            {
+                var employee = db.EmployeeList.FirstOrDefault(a => a.EmpID == id);
+                if (employee != null)
+                {
+                    tbTo.Text = employee.Email;
+                }
+            }
+        }
     }
+
 }

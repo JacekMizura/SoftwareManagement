@@ -15,31 +15,31 @@ namespace SoftwareManagement.UserInterface.EmployeeForm
 {
     public partial class AddEmployee : Form 
     {
-        Employee employee = new Employee();
-        public AddEmployee()
+        ModelContext db = new ModelContext();
+        static int id;
+        public AddEmployee(int recordId)
         {
             InitializeComponent();
+            id = recordId;
         }
 
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            employee.FirstName = tbName.Text.Trim();
-            employee.LastName = tbLastName.Text.Trim();
-            employee.Salary = Int32.Parse(tbSalary.Text.Trim());
-            employee.PhoneNumber = Int32.Parse(tbPhoneNumber.Text.Trim());
-            employee.Email = tbEmail.Text.Trim();
-
-            using (ModelContext db = new ModelContext())
+            if(id>0)
             {
-                if (employee.EmpId == 0)
-                {
-                    db.EmployeeList.Add(employee);
-                }
-
+                var employee = db.EmployeeList.FirstOrDefault(a => a.EmpID == id);
+                employee.FirstName = tbName.Text.Trim();
+                employee.LastName = tbLastName.Text.Trim();
+                employee.Email = tbEmail.Text.Trim();
+                employee.PhoneNumber = tbPhoneNumber.Text.Trim();
+                employee.Salary = Int32.Parse(tbSalary.Text.Trim());
                 db.SaveChanges();
-
-
+            }
+            else
+            {
+                db.EmployeeList.Add(new Employee { FirstName = tbName.Text.Trim(), LastName = tbLastName.Text.Trim(), Email = tbEmail.Text.Trim(), PhoneNumber = tbPhoneNumber.Text.Trim(), Salary = Int32.Parse(tbSalary.Text.Trim()) });
+                db.SaveChanges();
             }
             MessageBox.Show("Pomyślnie dodano pracownika");
             Close();
@@ -53,10 +53,17 @@ namespace SoftwareManagement.UserInterface.EmployeeForm
 
         private void AddEmployee_Load(object sender, EventArgs e)
         {
-            using(ModelContext db = new ModelContext())
+            if (id > 0)
             {
-                employeeBindingSource.DataSource = db.EmployeeList.ToList();
-
+                var employee = db.EmployeeList.FirstOrDefault(a => a.EmpID == id);
+                if (employee != null)
+                {
+                    tbName.Text = employee.FirstName;
+                    tbLastName.Text = employee.LastName;
+                    tbEmail.Text = employee.Email;
+                    tbPhoneNumber.Text = employee.PhoneNumber;
+                    tbSalary.Text = employee.Salary.ToString();
+                }
             }
         }
     }
